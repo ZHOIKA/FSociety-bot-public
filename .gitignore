@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Secrets / config local
+.env
+.env.*
+!.env.example
+*.token
+.git-credentials
+
+# Bancos / dados locais
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs e runtime
+*.log
+logs/
+.vertracloud/
+crashes/
+backups/
+data/
+
+# Sistema
+.DS_Store
+Thumbs.db
