@@ -1,26 +1,25 @@
 # F SOCIETY
 
-Versão pública do bot **F SOCIETY**, desenvolvido em Python com `discord.py`.
+Versão pública e sanitizada do bot **F SOCIETY**, desenvolvido em Python com `discord.py`.
 
-Esta edição pública é mantida separada do repositório de produção. Arquivos de ambiente, bancos locais, logs, crashes e credenciais **não fazem parte deste repositório**.
+Esta edição é mantida separada do repositório privado de produção e possui um histórico Git novo. Arquivos de ambiente, bancos locais, logs, crashes, backups e credenciais não fazem parte deste repositório.
 
-## Recursos
+## Recursos desta edição
 
 - Central visual de configuração
-- Tickets privados
-- Moderação
-- Boas-vindas
-- XP e economia
-- Música
-- Alertas de CVE
-- Mensagens e automações programadas
-- Rankings e perfis
-- Recursos de comunidade
+- Tickets privados com histórico
+- Moderação e proteção contra spam/convites
+- Boas-vindas e cargo automático
+- XP, níveis e economia básica
+- Alertas de CVE usando a NVD/NIST
+- Mensagens programadas
+- DarkWeb Watch para CTI baseada em metadados de fontes configuradas
+
+Os módulos internos e experimentais usados apenas na instalação privada não são publicados automaticamente aqui.
 
 ## Requisitos
 
 - Python 3.13+
-- FFmpeg para recursos de áudio
 - Bot criado no Discord Developer Portal
 
 ## Instalação
@@ -32,18 +31,11 @@ python3 -m pip install -r requirements.txt
 cp .env.example .env
 ```
 
-Edite `.env` e informe somente as credenciais necessárias no seu próprio ambiente:
+No mínimo, configure o token do seu próprio bot:
 
 ```env
 FSOCIETY_TOKEN=
 FSOCIETY_PREFIX=!
-SUPABASE_URL=
-SUPABASE_SERVICE_ROLE_KEY=
-SUPABASE_BUCKET=fsociety-backups
-SPOTIFY_CLIENT_ID=
-SPOTIFY_CLIENT_SECRET=
-FSOCIETY_GITHUB_REPO=ZHOIKA/FSociety-bot-public
-FSOCIETY_GITHUB_TOKEN=
 ```
 
 Depois execute:
@@ -52,26 +44,22 @@ Depois execute:
 python3 start.py
 ```
 
+O arquivo `fsociety.db` é criado localmente em tempo de execução e fica fora do Git.
+
+## DarkWeb Watch
+
+O módulo trabalha com metadados de fontes configuradas pelo administrador. Para consultar endereços `.onion`, o operador precisa configurar seu próprio proxy Tor com `FSOCIETY_ONION_PROXY`. Para proxy SOCKS, instale também `aiohttp-socks`.
+
 ## Segurança
 
-Nunca envie para o GitHub:
+Nunca publique `.env`, tokens do Discord, chaves de API, Personal Access Tokens, bancos SQLite de produção, logs, crash dumps ou backups. O `.gitignore` desta edição bloqueia esses artefatos por padrão.
 
-- `.env`
-- tokens do Discord
-- chaves do Supabase
-- secrets do Spotify
-- Personal Access Tokens do GitHub
-- bancos `*.db`, `*.sqlite` ou `*.sqlite3`
-- logs, crash dumps ou backups de produção
+Se uma credencial real for publicada acidentalmente, apagar o arquivo não basta: revogue ou rotacione a credencial no serviço correspondente.
 
-O `.gitignore` desta versão já bloqueia esses artefatos por padrão.
+## Edição pública x produção
 
-Se uma credencial real for publicada acidentalmente, remova-a do código **e revogue/rotacione a credencial** no serviço correspondente.
-
-## Dados
-
-O banco `fsociety.db` é criado em tempo de execução e não é versionado. Cada instalação deve possuir seus próprios dados.
+Este repositório é uma snapshot pública deliberadamente separada. O repositório privado continua sendo o ambiente de produção e pode possuir módulos/configurações adicionais que não pertencem à distribuição pública.
 
 ## Licença
 
-GPL-3.0. Consulte `LICENSE`.
+GPL-3.0-or-later.
