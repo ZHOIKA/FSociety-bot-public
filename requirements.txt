@@ -1,8 +1,5 @@
-# Discord, HTTP, persistência e sistema de música.
-discord.py[voice]==2.7.1
+discord.py==2.7.1
 aiohttp>=3.11,<4
-PyNaCl>=1.5,<1.6
-davey>=0.1.6,<0.2
-yt-dlp>=2025.1.15
-imageio-ffmpeg>=0.6,<1
-Pillow>=11,<12
+
+# Opcional: necessário apenas para fontes .onion via proxy SOCKS no DarkWeb Watch.
+# aiohttp-socks>=0.10,<1
